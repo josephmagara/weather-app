@@ -3,10 +3,10 @@ import { supportedWeatherTypes } from "../../domain/weather/WeatherType";
 import {
   WeatherAnimator,
   WeatherAnimatorProps,
-} from "../component/WeatherAnimator";
+} from "../component/weather/WeatherAnimator";
 import React from "react";
 import { View } from "react-native";
-import { WeatherDetailsView } from "../component/WeatherDetailsView";
+import { WeatherDetailsView } from "../component/weather/WeatherDetailsView";
 
 export interface WeatherReportPageProps {
   report: WeatherReport;
@@ -41,13 +41,13 @@ const WeatherReportPage: React.FC<WeatherReportPageProps> = ({ report }) => {
       style={{
         flexDirection: "column",
         flex: 1,
-        padding: 20,
+        
       }}
     >
-      <View style={{ flex: 0.6 }}>
+      <View style={{ flex: 0.6, padding: 20, backgroundColor:"#EFF3F9"}}>
         <WeatherAnimator {...weatherAnimatorProps} />
       </View>
-      <View style={{ flex: 0.6 }}>
+      <View style={{ flex: 0.4, backgroundColor:"white" }}>
         <WeatherDetailsView {...detailViewProps} />
       </View>
     </View>

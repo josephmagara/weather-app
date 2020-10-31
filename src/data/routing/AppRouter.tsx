@@ -9,8 +9,10 @@ const AppRouter: React.FC<{}> = () => {
     code: 119,
     location: "Melbourne",
     description: "Sunny",
+    temperatureUnit:"\xB0C",
     actualTemperature: 25,
-    feltTemperature: 28
+    feltTemperature: 28,
+    isDayTime: true
   }
 
   const props: WeatherReportPageProps = {
