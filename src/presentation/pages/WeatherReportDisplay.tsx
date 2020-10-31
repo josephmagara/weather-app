@@ -17,6 +17,7 @@ const WeatherReportDisplay: React.FC<WeatherReportDisplayProps> = ({
   const weatherType = supportedWeatherTypes.find(
     (type) => type.code === report.code
   );
+  
   const sourceFile = weatherType !== undefined ? weatherType.nightFile : defaultWeatherAnimation;
   const weatherAnimatorProps: WeatherAnimatorProps = {
     loop: true,
