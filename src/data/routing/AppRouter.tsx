@@ -1,7 +1,7 @@
 import * as React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { WeatherReport } from "../../domain/weather/WeatherReport";
-import WeatherReportDisplay, { WeatherReportDisplayProps } from "../../presentation/pages/WeatherReportDisplay";
+import WeatherReportPage, { WeatherReportPageProps } from "../../presentation/pages/WeatherReportPage";
 
 const AppRouter: React.FC<{}> = () => {
 
@@ -13,11 +13,11 @@ const AppRouter: React.FC<{}> = () => {
     feltTemperature: 28
   }
 
-  const props: WeatherReportDisplayProps = {
+  const props: WeatherReportPageProps = {
     report: weatherReport
   }
 
-  return <WeatherReportDisplay {...props}/>;
+  return <WeatherReportPage {...props}/>;
 };
 
 const styles = StyleSheet.create({
