@@ -1,10 +1,10 @@
 import React from "react";
-import LottieView from 'lottie-react-native'; 
+import LottieView from "lottie-react-native";
 
 export interface WeatherAnimatorProps {
   loop: boolean;
   autoplay: boolean;
-  fileName: string;
+  sourceFile: string;
   css: LottieCss;
 }
 
@@ -16,19 +16,15 @@ export interface LottieCss {
 export const WeatherAnimator: React.FC<WeatherAnimatorProps> = ({
   loop,
   autoplay,
-  fileName,
+  sourceFile,
   css,
 }) => {
-  
-  const filePath = "../../data/lotties/" + fileName;
-  const defaultOptions = {
-    loop: loop,
-    autoplay: autoplay,
-    source: filePath,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
-
-  return <LottieView {...defaultOptions} />;
+  return (
+    <LottieView
+      loop={loop}
+      source={sourceFile}
+      autoPlay={autoplay}
+      autoSize={true}
+    />
+  );
 };

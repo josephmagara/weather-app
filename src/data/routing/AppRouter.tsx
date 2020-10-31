@@ -6,7 +6,7 @@ import WeatherReportDisplay, { WeatherReportDisplayProps } from "../../presentat
 const AppRouter: React.FC<{}> = () => {
 
   const weatherReport: WeatherReport = {
-    code: 113,
+    code: 119,
     location: "Melbourne",
     description: "Sunny",
     actualTemperature: 25,
