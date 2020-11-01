@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import React from "react";
 import AppRouter from "../src/data/routing/AppRouter";
 
-describe('When staring thee app', function() {
+describe('When staring the app', function() {
   it('should render without throwing an error', function() {
     expect(shallow(<App />).contains(<AppRouter/>)).toBe(true);
   });
