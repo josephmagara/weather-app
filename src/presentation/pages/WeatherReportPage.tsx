@@ -1,5 +1,5 @@
 import { WeatherReport } from "../../domain/weather/WeatherReport";
-import { supportedWeatherTypes } from "../../domain/weather/WeatherType";
+import { weatherTypeViewConfigs } from "../../domain/weather/WeatherTypeViewConfigs";
 import {
   WeatherAnimator,
   WeatherAnimatorProps,
@@ -15,12 +15,18 @@ export interface WeatherReportPageProps {
 const defaultWeatherAnimation = require("../../data/lotties/clear-sky-day.json");
 
 const WeatherReportPage: React.FC<WeatherReportPageProps> = ({ report }) => {
-  const weatherType = supportedWeatherTypes.find(
+  const viewConfig = weatherTypeViewConfigs.find(
     (type) => type.code === report.code
   );
 
   const sourceFile =
-    weatherType !== undefined ? weatherType.nightFile : defaultWeatherAnimation;
+    viewConfig !== undefined
+      ? report.isDayTime
+        ? viewConfig.dayFile
+        : viewConfig.nightFile
+      : defaultWeatherAnimation;
+
+  const backgroundColor = viewConfig !== undefined ? viewConfig.backgroundColor : "#EFF3F9"
 
   const weatherAnimatorProps: WeatherAnimatorProps = {
     loop: true,
@@ -36,18 +42,25 @@ const WeatherReportPage: React.FC<WeatherReportPageProps> = ({ report }) => {
     report: report,
   };
 
+  const bottomBackgroundColor = report.isDayTime ? "#D0D6E9" : "#1C1A1B"
+
   return (
     <View
       style={{
         flexDirection: "column",
         flex: 1,
-        
       }}
     >
-      <View style={{ flex: 0.6, padding: 20, backgroundColor:"#EFF3F9"}}>
+      <View
+        style={{
+          flex: 0.6,
+          padding: 20,
+          backgroundColor: backgroundColor,
+        }}
+      >
         <WeatherAnimator {...weatherAnimatorProps} />
       </View>
-      <View style={{ flex: 0.4, backgroundColor:"white" }}>
+      <View style={{ flex: 0.4, backgroundColor: bottomBackgroundColor }}>
         <WeatherDetailsView {...detailViewProps} />
       </View>
     </View>
