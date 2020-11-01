@@ -6,8 +6,6 @@ import {
   CellCss,
   GroupedTextComponent,
   GroupedTextComponentProtocol,
-  TextCss,
-  TextProtocol,
 } from "../text/GroupedTextComponent";
 
 function getTemperatureString(amount: number, temperatureUnit: string) {
@@ -24,12 +22,13 @@ export const WeatherDetailsView: React.FC<WeatherDetailsView> = ({
   const {
     location,
     feltTemperature,
+    description,
     actualTemperature,
     temperatureUnit,
   } = report;
   const cellCss: CellCss = {
     flexDirection: "column",
-    flex:1
+    flex: 1,
   };
   const sharedTextProp = {
     h3: true,
@@ -38,16 +37,26 @@ export const WeatherDetailsView: React.FC<WeatherDetailsView> = ({
     css: cellCss,
     textGroups: [
       {
-        text: location,
+        text: description,
         props: sharedTextProp,
+      },
+      {
+        text: location,
+        css: {
+          textColor: "#656565",
+        },
+        props: {
+          h4: true,
+        },
       },
     ],
   };
   const feltTemperatureCellProtocol: GroupedTextComponentProtocol = {
     css: cellCss,
-    textGroups: [{
-      text: "Feels like"
-    },
+    textGroups: [
+      {
+        text: "Feels like",
+      },
       {
         text: getTemperatureString(feltTemperature, temperatureUnit),
         props: sharedTextProp,
@@ -56,9 +65,10 @@ export const WeatherDetailsView: React.FC<WeatherDetailsView> = ({
   };
   const actualTemperatureCellProtocol: GroupedTextComponentProtocol = {
     css: cellCss,
-    textGroups: [{
-      text: "Actual Temperature"
-    },
+    textGroups: [
+      {
+        text: "Actual Temperature",
+      },
       {
         text: getTemperatureString(actualTemperature, temperatureUnit),
         props: sharedTextProp,
@@ -81,8 +91,8 @@ export const WeatherDetailsView: React.FC<WeatherDetailsView> = ({
           flex: 1,
         }}
       >
-        <GroupedTextComponent {...feltTemperatureCellProtocol} />
         <GroupedTextComponent {...actualTemperatureCellProtocol} />
+        <GroupedTextComponent {...feltTemperatureCellProtocol} />
       </View>
     </View>
   );
