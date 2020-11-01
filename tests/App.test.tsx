@@ -14,7 +14,7 @@ describe("App", () => {
     let props: Object;
     beforeEach(() => {
       props = createTestProps({});
-      wrapper = shallow(<App />);
+      wrapper = shallow(App());
     });
   
     it("should render a <View />", () => {
