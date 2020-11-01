@@ -42,7 +42,7 @@ const WeatherReportPage: React.FC<WeatherReportPageProps> = ({ report }) => {
     report: report,
   };
 
-  const bottomBackgroundColor = report.isDayTime ? "#D0D6E9" : "#1C1A1B"
+  const bottomBackgroundColor = report.isDayTime ? "#F5F5F9" : "#1C1A1B"
 
   return (
     <View

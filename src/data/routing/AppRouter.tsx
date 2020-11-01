@@ -6,13 +6,13 @@ import WeatherReportPage, { WeatherReportPageProps } from "../../presentation/pa
 const AppRouter: React.FC<{}> = () => {
 
   const weatherReport: WeatherReport = {
-    code: 119,
+    code: 143,
     location: "Melbourne",
-    description: "Sunny",
+    description: "Overcast",
     temperatureUnit:"\xB0C",
     actualTemperature: 25,
     feltTemperature: 28,
-    isDayTime: true
+    isDayTime: false
   }
 
   const props: WeatherReportPageProps = {

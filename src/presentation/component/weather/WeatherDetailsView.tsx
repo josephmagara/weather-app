@@ -33,17 +33,23 @@ export const WeatherDetailsView: React.FC<WeatherDetailsView> = ({
   const sharedTextProp = {
     h3: true,
   };
+
+  const generalTextColor = report.isDayTime ? "black" : "white"
+  const locationTextColor = report.isDayTime ? "#656565" : "#C5C5C5"
   const locationCellProtocol: GroupedTextComponentProtocol = {
     css: cellCss,
     textGroups: [
       {
         text: description,
         props: sharedTextProp,
+        css:{
+          textColor: generalTextColor
+        }
       },
       {
         text: location,
         css: {
-          textColor: "#656565",
+          textColor: locationTextColor,
         },
         props: {
           h4: true,
@@ -56,10 +62,16 @@ export const WeatherDetailsView: React.FC<WeatherDetailsView> = ({
     textGroups: [
       {
         text: "Feels like",
+        css:{
+          textColor: generalTextColor
+        }
       },
       {
         text: getTemperatureString(feltTemperature, temperatureUnit),
         props: sharedTextProp,
+        css:{
+          textColor: generalTextColor
+        }
       },
     ],
   };
@@ -68,10 +80,16 @@ export const WeatherDetailsView: React.FC<WeatherDetailsView> = ({
     textGroups: [
       {
         text: "Actual Temperature",
+        css:{
+          textColor: generalTextColor
+        }
       },
       {
         text: getTemperatureString(actualTemperature, temperatureUnit),
         props: sharedTextProp,
+        css:{
+          textColor: generalTextColor
+        }
       },
     ],
   };
