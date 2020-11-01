@@ -1,24 +1,11 @@
-import 'react-native';
-import App from '../App';
-import { shallow, ShallowWrapper } from 'enzyme';
-import React from 'react';
-import { View } from 'react-native';
+import "react-native";
+import App from "../App";
+import { shallow } from 'enzyme';
+import React from "react";
+import AppRouter from "../src/data/routing/AppRouter";
 
-const createTestProps = (props: Object) => ({
-  ...props
-});
-
-describe("App", () => {
-  describe("rendering", () => {
-    let wrapper: ShallowWrapper;
-    let props: Object;
-    beforeEach(() => {
-      props = createTestProps({});
-      wrapper = shallow(App());
-    });
-  
-    it("should render a <View />", () => {
-      expect(wrapper.find(View)).toHaveLength(1);
-    });
+describe('When staring thee app', function() {
+  it('should render without throwing an error', function() {
+    expect(shallow(<App />).contains(<AppRouter/>)).toBe(true);
   });
 });

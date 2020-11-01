@@ -28,15 +28,19 @@
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
+    "@babel/preset-env": "^7.12.1",
     "@types/enzyme": "^3.10.8",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^26.0.15",
     "@types/react": "~16.9.35",
     "@types/react-dom": "~16.9.8",
     "@types/react-native": "~0.63.2",
+    "babel-eslint": "^10.1.0",
     "babel-preset-expo": "~8.3.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
+    "eslint": "^7.12.1",
+    "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.1",
     "jest-expo": "~39.0.0",
     "ts-jest": "^26.4.3",
@@ -46,9 +50,8 @@
     "preset": "react-native",
     "verbose": true,
     "transform": {
-      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js",
-      "^.+\\.tsx?$": "ts-jest",
-      "^.+\\.js?$": "babel-jest"
+      "\\.js$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.tsx?$": "ts-jest"
     },
     "globals": {
       "ts-jest": {
@@ -70,6 +73,7 @@
     "setupFiles": [
       "./tests/setup.tsx"
     ],
+    "setupFilesAfterEnv": ["<rootDir>/tests/setup.tsx"],
     "transformIgnorePatterns": [
       "!node_modules/react-runtime"
     ]
