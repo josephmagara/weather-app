@@ -1,19 +1,23 @@
-import { WEATHER_API_URL, ACCESS_KEY } from "@env";
+import { WEATHER_API_URL, ACCESS_KEY } from "react-native-dotenv";
 import { WeatherReportResponse } from "./WeatherReportResponse";
-import Frisbee from "frisbee"
+import Toast from "react-native-simple-toast";
+import axios from "axios";
 
 const baseUrl = WEATHER_API_URL + "current?access_key=" + ACCESS_KEY;
 
-// create a new instance of Frisbee
-const api = new Frisbee({
-    baseURI: baseUrl, // optional
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    }
-})
-
-export function getWeatherForCity(city: string): Promise<WeatherReportResponse>{
-    const queryString = "query=" + city
-    return api._fetch(queryString)
+export function getWeatherForCity(
+  city: string
+): Promise<WeatherReportResponse> {
+  const queryString = baseUrl + "&query=" + city;
+  Toast.show(queryString, Toast.LONG);
+  return new Promise<WeatherReportResponse>((resolve, reject) => {
+    axios
+      .get<WeatherReportResponse>(queryString)
+      .then((result) => {
+        resolve(result.data);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
 }

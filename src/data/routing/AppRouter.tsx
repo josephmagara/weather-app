@@ -12,7 +12,7 @@ const AppRouter: React.FC<{}> = () => {
       {({ isLoading, report }) => {
         const weatherReport: WeatherReport = {
           code: 143,
-          location: "Melbourne",
+          location: "London",
           description: "Overcast",
           temperatureUnit: "\xB0C",
           actualTemperature: 25,
@@ -24,12 +24,7 @@ const AppRouter: React.FC<{}> = () => {
           report: weatherReport,
         };
 
-        const actualProps =
-          report !== undefined
-            ? {
-                report: report,
-              }
-            : props;
+        const actualProps = report !== undefined ? { report: report } : props;
 
         return <WeatherReportPage {...actualProps} />;
       }}

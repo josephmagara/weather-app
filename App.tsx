@@ -1,5 +1,4 @@
 import * as React from "react";
-import { AppState, StyleSheet, Text, View } from "react-native";
 import AppStateProvider, {
   AppProviderProps,
 } from "./src/data/contexts/AppContext";
@@ -11,16 +10,5 @@ export default function App() {
     loadCurrentWeather: true,
     cityToQuery: "Melbourne",
   };
-  return (
-    <AppStateProvider {...initialAppState}/>
-  );
+  return <AppStateProvider {...initialAppState} />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
