@@ -8,10 +8,14 @@
     "test": "jest"
   },
   "dependencies": {
+    "@babel/preset-react": "^7.12.1",
+    "@babel/preset-typescript": "^7.12.1",
     "@react-native-community/geolocation": "^2.0.2",
+    "babel-jest": "^25.5.1",
     "expo": "~39.0.2",
     "expo-splash-screen": "~0.6.2",
     "expo-updates": "~0.3.3",
+    "jest-fetch-mock": "^3.0.3",
     "lottie-ios": "^3.1.8",
     "lottie-react-native": "^3.5.0",
     "react": "16.13.1",
@@ -26,15 +30,25 @@
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
+    "@babel/preset-env": "^7.12.1",
+    "@types/enzyme": "^3.10.8",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@types/jest": "^26.0.15",
+    "@types/jsdom": "^16.2.5",
     "@types/react": "~16.9.35",
     "@types/react-dom": "~16.9.8",
     "@types/react-native": "~0.63.2",
+    "babel-eslint": "^10.1.0",
     "babel-preset-expo": "~8.3.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
+    "eslint": "^7.12.1",
+    "eslint-plugin-react": "^7.21.5",
+    "jest": "^26.6.1",
     "jest-expo": "~39.0.0",
-    "typescript": "~3.9.5"
-  },
-  "jest": {
-    "preset": "react-native"
+    "metro-react-native-babel-preset": "^0.59.0",
+    "ts-jest": "^26.4.3",
+    "typescript": "^3.9.7"
   },
   "private": true
 }

@@ -1,0 +1,30 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "jest": true,
+    "jsx": true,
+    "useJSXTextNode": true
+  },
+  "plugins": [],
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "prettier/@typescript-eslint","eslint:recommended", "plugin:react/recommended"
+  ],
+  "rules": {
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "no-empty": 1
+  },
+  "globals": {
+    "require": false,
+    "module": false,
+    "Promise": false,
+    "device": false,
+    "element": false,
+    "jasmine": false,
+    "by": false,
+    "Set": false
+  }
+}
