@@ -13,7 +13,7 @@ const api = new Frisbee({
     }
 })
 
-function getWeatherForCity(city: string): Promise<WeatherReportResponse>{
+export function getWeatherForCity(city: string): Promise<WeatherReportResponse>{
     const queryString = "query=" + city
     return api._fetch(queryString)
 }
