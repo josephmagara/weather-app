@@ -18,9 +18,10 @@ export const AppContext = React.createContext<AppContextProtocol>({
 
 const { Provider } = AppContext;
 
-interface AppProviderProps {
+export interface AppProviderProps {
   children: React.ReactNode;
   loadCurrentWeather: boolean;
+  cityToQuery?: string;
 }
 
 interface AppState {
@@ -31,11 +32,12 @@ interface AppState {
 
 const AppStateProvider: React.FC<AppProviderProps> = ({
   children,
+  cityToQuery,
   loadCurrentWeather,
 }) => {
   const initialAppState: AppState = {
     isLoading: loadCurrentWeather,
-    cityToQuery: "Melbourne",
+    cityToQuery: cityToQuery,
   };
 
   const [appState, setAppState] = React.useState<AppState>(initialAppState);
