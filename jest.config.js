@@ -1,6 +1,8 @@
 module.exports = {
   preset: "react-native",
   verbose: true,
+  testURL: "http://localhost/",
+  testEnvironment: "jsdom",
   globals: {
     "ts-jest": {
       diagnostics: false,
@@ -14,9 +16,9 @@ module.exports = {
   testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   modulePaths: ["<rootDir>"],
-  setupFiles: ["./tests/setup.tsx"],
+  setupFiles: ["./tests/setup-tests.js"],
   setupFilesAfterEnv: [
-    "<rootDir>/tests/setup.tsx"
+    "<rootDir>/tests/setup-tests.js"
   ],
   transformIgnorePatterns: [
     "!node_modules/react-runtime"
