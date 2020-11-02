@@ -9,11 +9,9 @@
   },
   "dependencies": {
     "@react-native-community/geolocation": "^2.0.2",
-    "@types/frisby": "^2.0.8",
     "expo": "~39.0.2",
     "expo-splash-screen": "~0.6.2",
     "expo-updates": "~0.3.3",
-    "frisbee": "^3.1.4",
     "lottie-ios": "^3.1.8",
     "lottie-react-native": "^3.5.0",
     "react": "16.13.1",
@@ -30,12 +28,9 @@
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {
-    "@babel/core": "~7.9.0",
-    "@types/axios": "^0.14.0",
     "@types/react": "~16.9.35",
     "@types/react-dom": "~16.9.8",
     "@types/react-native": "~0.63.2",
-    "babel-preset-expo": "~8.3.0",
     "jest-expo": "~39.0.0",
     "typescript": "~3.9.5"
   },

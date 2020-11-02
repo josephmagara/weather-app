@@ -1,5 +1,4 @@
 import * as React from "react";
-import { StyleSheet, Text, View } from "react-native";
 import { WeatherReport } from "../../domain/weather/WeatherReport";
 import WeatherReportPage, {
   WeatherReportPageProps,
