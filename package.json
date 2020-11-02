@@ -9,9 +9,11 @@
   },
   "dependencies": {
     "@react-native-community/geolocation": "^2.0.2",
+    "@types/frisby": "^2.0.8",
     "expo": "~39.0.2",
     "expo-splash-screen": "~0.6.2",
     "expo-updates": "~0.3.3",
+    "frisbee": "^3.1.4",
     "lottie-ios": "^3.1.8",
     "lottie-react-native": "^3.5.0",
     "react": "16.13.1",
