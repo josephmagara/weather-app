@@ -10,7 +10,7 @@ const AppRouter: React.FC<{}> = () => {
     <AppContext.Consumer>
       {({ isLoading, report }) => {
         const weatherReport: WeatherReport = {
-          code: 143,
+          code: 113,
           location: "London",
           description: "Overcast",
           temperatureUnit: "\xB0C",
