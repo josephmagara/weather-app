@@ -58,7 +58,7 @@ const AppStateProvider: React.FC<AppProviderProps> = ({
       isLoading: true,
       cityToQuery: city,
       report: appState.report,
-      currentSelectedView: appState.currentSelectedView,
+      currentSelectedView: "current_weather",
     };
     setAppState(newState);
   };
@@ -80,22 +80,10 @@ const AppStateProvider: React.FC<AppProviderProps> = ({
     if (isLoading && cityToQuery !== undefined) {
       getWeatherForCity(cityToQuery)
         .then((response) => {
-          const { current } = response;
-          const { country, name } = response.location;
-
-          const weatherReport: WeatherReport = {
-            code: current.weather_code,
-            location: name + ", " + country,
-            description: current.weather_descriptions,
-            temperatureUnit: response.request.unit,
-            actualTemperature: current.temperature,
-            feltTemperature: current.feelslike,
-            isDayTime: current.is_day,
-          };
 
           const newAppState: AppState = {
             isLoading: false,
-            report: weatherReport,
+            report: response,
             cityToQuery: cityToQuery,
             currentSelectedView: currentSelectedView,
           };

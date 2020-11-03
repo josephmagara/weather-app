@@ -6,10 +6,12 @@ import {
   NavigationCellId,
   NavigationProps,
 } from "../../presentation/component/navigation/BottomNavigationComponent";
+import { SelectLocationPage } from "../../presentation/pages/SelectLocationPage";
 import WeatherReportPage, {
   WeatherReportPageProps,
 } from "../../presentation/pages/WeatherReportPage";
 import { AppContext } from "../contexts/AppContext";
+import { getItemKey } from "../utils/CommonUtils";
 
 const AppRouter: React.FC<{}> = () => {
   return (
@@ -18,6 +20,7 @@ const AppRouter: React.FC<{}> = () => {
         isLoading,
         report,
         currentSelectedView,
+        getWeatherFor,
         onNavigationCellSelected,
       }) => {
         const weatherReport: WeatherReport = {
@@ -34,23 +37,32 @@ const AppRouter: React.FC<{}> = () => {
           report: weatherReport,
         };
 
-        const actualProps = report !== undefined ? { report: report } : props;
+        const nonNullProps = report !== undefined ? { report: report } : props;
 
         const navigationProps: NavigationProps = {
-          isDayTime: actualProps.report.isDayTime,
+          isDayTime: nonNullProps.report.isDayTime,
           activeCellId: currentSelectedView,
           onNavCellClicked: (cell: NavigationCellId) => {
             onNavigationCellSelected(cell);
           },
         };
 
+        let pageToView = <WeatherReportPage {...nonNullProps} />;
+
+        if (currentSelectedView === "list_of_cities") {
+          const handleCitySelected = (city: string) => {
+            getWeatherFor(city);
+          };
+          pageToView = (
+            <SelectLocationPage  key={getItemKey()} isDayTime={nonNullProps.report.isDayTime} onCitySelected={handleCitySelected} />
+          );
+        }
+
         return (
           <View style={{ flex: 1, flexDirection: "column" }}>
-            <View style={{ flex: 0.9 }}>
-              <WeatherReportPage {...actualProps} />
-            </View>
-            <View style={{ flex: 0.1 }}>
-              <BottomNavigationComponent {...navigationProps} />
+            <View  key={getItemKey()} style={{ flex: 0.9 }}>{pageToView}</View>
+            <View  key={getItemKey()} style={{ flex: 0.1 }}>
+              <BottomNavigationComponent  key={getItemKey()} {...navigationProps} />
             </View>
           </View>
         );
