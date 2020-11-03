@@ -1,4 +1,4 @@
-export interface WeatherReportResponse {
+export interface ApiWeatherResponse {
   request: {
     unit: string;
   };

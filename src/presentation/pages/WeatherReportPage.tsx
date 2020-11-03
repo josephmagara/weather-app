@@ -1,5 +1,5 @@
 import { WeatherReport } from "../../domain/weather/WeatherReport";
-import { weatherTypeViewConfigs } from "../../domain/weather/WeatherTypeViewConfigs";
+import { weatherTypeViewConfigs } from "../component/weather/WeatherTypeViewConfigs";
 import {
   WeatherAnimator,
   WeatherAnimatorProps,
@@ -12,7 +12,7 @@ export interface WeatherReportPageProps {
   report: WeatherReport;
 }
 
-const defaultWeatherAnimation = require("../../data/lotties/clear-sky-day.json");
+const defaultWeatherAnimation = require("../../data/assets/lotties/clear-sky-day.json");
 
 const WeatherReportPage: React.FC<WeatherReportPageProps> = ({ report }) => {
   const viewConfig = weatherTypeViewConfigs.find(
@@ -53,14 +53,14 @@ const WeatherReportPage: React.FC<WeatherReportPageProps> = ({ report }) => {
     >
       <View
         style={{
-          flex: 0.6,
+          flex: 0.65,
           padding: 20,
           backgroundColor: backgroundColor,
         }}
       >
         <WeatherAnimator {...weatherAnimatorProps} />
       </View>
-      <View style={{ flex: 0.4, backgroundColor: bottomBackgroundColor }}>
+      <View style={{ flex: 0.35, backgroundColor: bottomBackgroundColor }}>
         <WeatherDetailsView {...detailViewProps} />
       </View>
     </View>
