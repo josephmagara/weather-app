@@ -1,5 +1,5 @@
 import { WeatherReport } from "../../domain/weather/WeatherReport";
-import { weatherTypeViewConfigs } from "../../domain/weather/WeatherTypeViewConfigs";
+import { weatherTypeViewConfigs } from "../component/weather/WeatherTypeViewConfigs";
 import {
   WeatherAnimator,
   WeatherAnimatorProps,
