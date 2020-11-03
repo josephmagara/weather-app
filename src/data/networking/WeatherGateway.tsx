@@ -1,7 +1,7 @@
 import { WeatherReportResponse } from "./WeatherReportResponse";
 import axios from "axios";
 
-const baseUrl = process.env.WEATHER_API_URL + "current?access_key=" + process.env.ACCESS_KEY;
+const baseUrl = "http://api.weatherstack.com/current?access_key=b45703095717f0f463c63387e997f28b";
 
 export function getWeatherForCity(
   city: string

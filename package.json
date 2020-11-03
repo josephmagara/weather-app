@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@react-native-community/geolocation": "^2.0.2",
+    "axios": "^0.21.0",
     "expo": "~39.0.2",
     "expo-splash-screen": "~0.6.2",
     "expo-updates": "~0.3.3",
@@ -32,7 +33,7 @@
     "@types/react-dom": "~16.9.8",
     "@types/react-native": "~0.63.2",
     "jest-expo": "~39.0.0",
-    "typescript": "~3.9.5"
+    "typescript": "^3.9.7"
   },
   "jest": {
     "preset": "react-native"

@@ -19,7 +19,7 @@ export const weatherTypeViewConfigs: Array<WeatherViewConfig> = [
     description: "Partly cloudy",
     dayFile: require("../../data/lotties/partly-cloudy-day.json"),
     nightFile: require("../../data/lotties/partly-cloudy-night.json"),
-    backgroundColor: "#EFF3F9"
+    backgroundColor: "#C3E2F9"
   },
   {
     code: 119,
