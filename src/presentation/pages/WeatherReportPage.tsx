@@ -7,7 +7,6 @@ import {
 import React from "react";
 import { View } from "react-native";
 import { WeatherDetailsView } from "../component/weather/WeatherDetailsView";
-import { BottomNavigationComponent } from "../component/navigation/BottomNavigationComponent";
 
 export interface WeatherReportPageProps {
   report: WeatherReport;
@@ -54,21 +53,15 @@ const WeatherReportPage: React.FC<WeatherReportPageProps> = ({ report }) => {
     >
       <View
         style={{
-          flex: 0.6,
+          flex: 0.65,
           padding: 20,
           backgroundColor: backgroundColor,
         }}
       >
         <WeatherAnimator {...weatherAnimatorProps} />
       </View>
-      <View style={{ flex: 0.3, backgroundColor: bottomBackgroundColor }}>
+      <View style={{ flex: 0.35, backgroundColor: bottomBackgroundColor }}>
         <WeatherDetailsView {...detailViewProps} />
-      </View>
-      <View style={{ flex: 0.1 }}>
-        <BottomNavigationComponent
-          isDayTime={report.isDayTime}
-          activeCellId="current_weather"
-        />
       </View>
     </View>
   );

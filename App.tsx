@@ -4,7 +4,7 @@ import AppRouter from "./src/data/routing/AppRouter";
 
 export default function App() {
   return (
-    <AppStateProvider loadCurrentWeather={true} cityToQuery="Melbourne">
+    <AppStateProvider loadCurrentWeather={true} cityToQuery="Melbourne" currentSelectedView="current_weather">
       <AppRouter />
     </AppStateProvider>
   );
