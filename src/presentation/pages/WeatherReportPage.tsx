@@ -12,7 +12,7 @@ export interface WeatherReportPageProps {
   report: WeatherReport;
 }
 
-const defaultWeatherAnimation = require("../../data/lotties/clear-sky-day.json");
+const defaultWeatherAnimation = require("../../data/assets/lotties/clear-sky-day.json");
 
 const WeatherReportPage: React.FC<WeatherReportPageProps> = ({ report }) => {
   const viewConfig = weatherTypeViewConfigs.find(
