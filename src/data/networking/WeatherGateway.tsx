@@ -3,15 +3,14 @@ import axios from "axios";
 import { WeatherReport } from "../../domain/weather/WeatherReport";
 import { WEATHER_API_URL, ACCESS_KEY } from "../../../env"
 
-export function getWeatherForCity(city: string): Promise<WeatherReport> {
+export function getWeatherForCity(city: string): Promise<ApiWeatherResponse> {
   const baseUrl = `${WEATHER_API_URL}current?access_key=${ACCESS_KEY}`;
   const queryString = baseUrl + "&query=" + city;
-  return new Promise<WeatherReport>((resolve, reject) => {
+  return new Promise<ApiWeatherResponse>((resolve, reject) => {
     axios
       .get<ApiWeatherResponse>(queryString)
       .then((result) => {
-        const weatherReport = weatherResponseToWeatherReport(result.data);
-        resolve(weatherReport);
+        resolve(result.data);
       })
       .catch((error) => {
         reject(error);
