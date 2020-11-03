@@ -1,17 +1,16 @@
 import { ApiWeatherResponse } from "./WeatherReportResponse";
 import axios from "axios";
 import { WeatherReport } from "../../domain/weather/WeatherReport";
-
-const baseUrl =
-  "http://api.weatherstack.com/current?access_key=b45703095717f0f463c63387e997f28b";
+import { WEATHER_API_URL, ACCESS_KEY } from "../../../env"
 
 export function getWeatherForCity(city: string): Promise<WeatherReport> {
+  const baseUrl = `${WEATHER_API_URL}current?access_key=${ACCESS_KEY}`;
   const queryString = baseUrl + "&query=" + city;
   return new Promise<WeatherReport>((resolve, reject) => {
     axios
       .get<ApiWeatherResponse>(queryString)
       .then((result) => {
-        const weatherReport = weatherResponseToWeatherReport(result.data)
+        const weatherReport = weatherResponseToWeatherReport(result.data);
         resolve(weatherReport);
       })
       .catch((error) => {
@@ -44,6 +43,5 @@ export const weatherResponseToWeatherReport = (
     isDayTime: current.is_day,
   };
 
-
-  return weatherReport
+  return weatherReport;
 };

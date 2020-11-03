@@ -1,64 +1,59 @@
+import Geolocation from "@react-native-community/geolocation";
+import axios from "axios";
+import { PermissionsAndroid, Platform } from "react-native";
+import { GOOGLE_MAPS_API_KEY } from "../../../env";
 
-import Geolocation from '@react-native-community/geolocation';
-import { Platform, PermissionsAndroid } from 'react-native';
-
-function requestLocation(){
-    
-        const requestLocationPermission = async () => {
-          if (Platform.OS === 'ios') {
-            getOneTimeLocation();
-          } else {
-            try {
-              const granted = await PermissionsAndroid.request(
-                PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-                {
-                  title: 'Location Access Required',
-                  message: 'This App needs to Access your location',
-                  buttonPositive: "Grant Access"
-                },
-              );
-              if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-                //To Check, If Permission is granted
-                getOneTimeLocation();
-              } else {
-                //setLocationStatus('Permission Denied');
-              }
-            } catch (err) {
-              console.warn(err);
-            }
-          }
-        };
-        requestLocationPermission();
+export interface CurrentLocation {
+  city: string
+  country: string
 }
 
-const getOneTimeLocation = () => {
-    //setLocationStatus('Getting Location ...');
-    Geolocation.getCurrentPosition(
-      //Will give you the current location
-      (position) => {
-        //setLocationStatus('You are Here');
+const requestPermission = (): Promise<boolean> => {
+  if (Platform.OS === "ios") return Promise.resolve(true);
+  return PermissionsAndroid.request(
+    PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+    {
+      title: "Location Permissions Needed",
+      message: "This app requires your location in order to proceed",
+      buttonPositive: "Grant Location",
+    }
+  ).then((granted) => {
+    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+      return Promise.resolve(true);
+    } else {
+      return Promise.reject(false);
+    }
+  });
+};
 
-        //getting the Longitude from the location json
-        const currentLongitude = 
-          JSON.stringify(position.coords.longitude);
+const getCoordinates = () => {
+  return requestPermission().then((ok) => {
+    return new Promise((resolve, reject) => {
+      const options =
+        Platform.OS === "android"
+          ? { enableHighAccuracy: true, timeout: 5000 }
+          : { enableHighAccuracy: true, timeout: 5000, maximumAge: 2000 };
+          global.navigator.geolocation
+      global.navigator.geolocation.getCurrentPosition(resolve, reject, options);
+    });
+  });
+};
 
-        //getting the Latitude from the location json
-        const currentLatitude = 
-          JSON.stringify(position.coords.latitude);
+const locationToAddress = (latitdue: number, longtitude: number): Promise<CurrentLocation> => {
+  const locationToPublish = `${latitdue},${longtitude}`
+  const url = `https://maps.googleapis.com/mapps/api/geocode/json?latlng-${locationToPublish}&sensor=true&key=${GOOGLE_MAPS_API_KEY}`
 
-        //Setting Longitude state
-        //setCurrentLongitude(currentLongitude);
+  return new Promise((resolve, reject) => {
+    axios
+      .get(url)
+      .then((result) => {
         
-        //Setting Longitude state
-        //setCurrentLatitude(currentLatitude);
-      },
-      (error) => {
-        //setLocationStatus(error.message);
-      },
-      {
-        enableHighAccuracy: false,
-        timeout: 30000,
-        maximumAge: 1000
-      },
-    );
-  };
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  })
+  
+} 
+
+export default getCoordinates;

@@ -65,3 +65,4 @@ web-build/
 
 # environment file
 .env
+env.tsx
