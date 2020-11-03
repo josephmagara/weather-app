@@ -9,7 +9,7 @@ export const ErrorPage: React.FC<{}> = () => {
     <View key={getItemKey()} style={{ flex: 1, flexDirection: "column" }}>
       <LottieView
         key={getItemKey()}
-        loop={true}
+        loop={false}
         source={animationFile}
         autoPlay={true}
         resizeMode={"cover"}
