@@ -64,8 +64,14 @@ const AppStateProvider: React.FC<AppProviderProps> = ({
   };
 
   const handleonNavigationCellSelected = (cellId: NavigationCellId) => {
-    const newState: AppState = appState;
+    const newState: AppState = {
+      isLoading: true,
+      cityToQuery: appState.cityToQuery,
+      report: appState.report,
+      currentSelectedView: appState.currentSelectedView,
+    }
     newState.currentSelectedView = cellId;
+    newState.isLoading = true
     setAppState(newState);
   };
 

@@ -43,9 +43,10 @@ const AppRouter: React.FC<{}> = () => {
             onNavigationCellSelected(cell);
           },
         };
+
         return (
           <View style={{ flex: 1, flexDirection: "column" }}>
-            <View style={{ flex: 1 }}>
+            <View style={{ flex: 0.9 }}>
               <WeatherReportPage {...actualProps} />
             </View>
             <View style={{ flex: 0.1 }}>

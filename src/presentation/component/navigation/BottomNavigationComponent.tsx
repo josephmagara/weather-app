@@ -21,12 +21,18 @@ export const BottomNavigationComponent: React.FC<NavigationProps> = ({
   const weatherIcon = weatherCellIsActive ? "cloud" : "cloud-queue";
 
   const backgroundColor = isDayTime ? "#F5F5F9" : "#1C1A1B";
+  const onWeatherCellPressed = () => {
+    onNavCellClicked("current_weather")
+  };
 
+  const onLocationCellPressed = () => {
+    onNavCellClicked("list_of_cities")
+  };
   return (
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.cell}
-        onPress={() => onNavCellClicked("current_weather")}
+        onPress={() => onWeatherCellPressed()}
       >
         <View>
           <Icon
@@ -39,7 +45,7 @@ export const BottomNavigationComponent: React.FC<NavigationProps> = ({
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.cell}
-        onPress={() => onNavCellClicked("list_of_cities")}
+        onPress={() => onLocationCellPressed()}
       >
         <View style={styles.cell}>
           <Icon
