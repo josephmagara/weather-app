@@ -26,7 +26,7 @@ export const weatherTypeViewConfigs: Array<WeatherViewConfig> = [
     description: "Cloudy",
     dayFile: require("../../../data/assets/lotties/cloudy-day.json"),
     nightFile: require("../../../data/assets/lotties/cloudy-night.json"),
-    backgroundColor: "#EFF3F9"
+    backgroundColor: "#A1BBCE"
   },
   {
     code: 122,
@@ -68,14 +68,14 @@ export const weatherTypeViewConfigs: Array<WeatherViewConfig> = [
     description: "Patchy freezing drizzle possible",
     dayFile: require("../../../data/assets/lotties/patchy-rainy-day.json"),
     nightFile: require("../../../data/assets/lotties/patchy-rainy-night.json"),
-    backgroundColor: "#DDEFFD"
+    backgroundColor: "#C0C6CF"
   },
   {
     code: 200,
     description: "Thundery outbreaks possible",
     dayFile: require("../../../data/assets/lotties/thunderstorm-day.json"),
     nightFile: require("../../../data/assets/lotties/thunderstorm-night.json"),
-    backgroundColor: "#839FA9"
+    backgroundColor: "#3A4B51"
   },
   {
     code: 227,
@@ -89,49 +89,49 @@ export const weatherTypeViewConfigs: Array<WeatherViewConfig> = [
     description: "Blizzard",
     dayFile: require("../../../data/assets/lotties/snowy-day.json"),
     nightFile: require("../../../data/assets/lotties/snowy-night.json"),
-    backgroundColor: "#839FA9"
+    backgroundColor: "#1D2E5C"
   },
   {
     code: 248,
     description: "Fog",
     dayFile: require("../../../data/assets/lotties/misty-day.json"),
     nightFile: require("../../../data/assets/lotties/misty-night.json"),
-    backgroundColor: "#234A82" 
+    backgroundColor: "#9CA1A8" 
   },
   {
     code: 260,
     description: "Freezing fog",
     dayFile: require("../../../data/assets/lotties/misty-day.json"),
     nightFile: require("../../../data/assets/lotties/misty-night.json"), 
-    backgroundColor: "#234A82" 
+    backgroundColor: "#8C97A8" 
   },
   {
     code: 263,
     description: "Patchy light drizzle",
     dayFile: require("../../../data/assets/lotties/patchy-rainy-day.json"),
     nightFile: require("../../../data/assets/lotties/patchy-rainy-night.json"),
-    backgroundColor: "#6C9BD1" 
+    backgroundColor: "#8390A2" 
   },
   {
     code: 266,
     description: "Light drizzle",
     dayFile: require("../../../data/assets/lotties/patchy-rainy-day.json"),
     nightFile: require("../../../data/assets/lotties/patchy-rainy-night.json"),
-    backgroundColor: "#6C9BD1" 
+    backgroundColor: "#7EA5D1" 
   },
   {
     code: 281,
     description: "Freezing drizzle",
     dayFile: require("../../../data/assets/lotties/patchy-rainy-day.json"),
     nightFile: require("../../../data/assets/lotties/patchy-rainy-night.json"),
-    backgroundColor: "#6C9BD1" 
+    backgroundColor: "#7EA5D1" 
   },
   {
     code: 284,
     description: "Heavy freezing drizzle",
     dayFile: require("../../../data/assets/lotties/patchy-rainy-day.json"),
     nightFile: require("../../../data/assets/lotties/patchy-rainy-night.json"),
-    backgroundColor: "#203360" 
+    backgroundColor: "#83A7DA" 
   },
   {
     code: 293,
@@ -152,28 +152,28 @@ export const weatherTypeViewConfigs: Array<WeatherViewConfig> = [
     description: "Moderate rain at times",
     dayFile: require("../../../data/assets/lotties/patchy-rainy-day.json"),
     nightFile: require("../../../data/assets/lotties/patchy-rainy-night.json"),
-    backgroundColor: "#203360" 
+    backgroundColor: "#6580CB" 
   },
   {
     code: 302,
     description: "Moderate rain",
     dayFile: require("../../../data/assets/lotties/patchy-rainy-day.json"),
     nightFile: require("../../../data/assets/lotties/patchy-rainy-night.json"),
-    backgroundColor: "#203360" 
+    backgroundColor: "#6580CB" 
   },
   {
     code: 305,
     description: "Heavy rain at times",
     dayFile: require("../../../data/assets/lotties/thunderstorm-day.json"),
     nightFile: require("../../../data/assets/lotties/thunderstorm-night.json"),
-    backgroundColor: "#839FA9"
+    backgroundColor: "#3A4B51"
   },
   {
     code: 308,
     description: "Heavy rain",
     dayFile: require("../../../data/assets/lotties/thunderstorm-day.json"),
     nightFile: require("../../../data/assets/lotties/thunderstorm-night.json"),
-    backgroundColor: "#839FA9"
+    backgroundColor: "#3A4B51"
   },
   {
     code: 311,
