@@ -6,8 +6,12 @@ import { WeatherReport } from "../../../src/domain/weather/WeatherReport";
 describe("The weather report page", () => {
   test("should have view displaying an animated depiction of the report", () => {
     const selectLocationPage = renderWeatherReportPage();
-    const locationsList = selectLocationPage.find("WeatherAnimator");
-    expect(locationsList).toExist();
+    expect(selectLocationPage.find("WeatherAnimator")).toExist();
+  });
+
+  test("should have view displaying the details of the report", () => {
+    const selectLocationPage = renderWeatherReportPage();
+    expect(selectLocationPage.find("WeatherDetailsView")).toExist();
   });
 });
 
