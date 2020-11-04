@@ -26,7 +26,7 @@ export const LoadingPage: React.FC<{}> = () => {
         />
       </View>
 
-      <View testID="loading-label" key={getItemKey()} style={{ flex: 0.1 , alignContent:"center"}}>
+      <View key={getItemKey()} style={{ flex: 0.1 , alignContent:"center"}}>
           <Text
             key={getItemKey()}
             {...props}
