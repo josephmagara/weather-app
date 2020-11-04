@@ -1,7 +1,7 @@
 import axios from "axios";
-import { getWeatherForCity, weatherResponseToWeatherReport } from "../src/data/networking/WeatherGateway";
-import { ApiWeatherResponse } from "../src/data/networking/WeatherReportResponse";
-import { WeatherReport } from "../src/domain/weather/WeatherReport";
+import { getWeatherForCity, weatherResponseToWeatherReport } from "../../../src/data/networking/WeatherGateway";
+import { ApiWeatherResponse } from "../../../src/data/networking/WeatherReportResponse";
+import { WeatherReport } from "../../../src/domain/weather/WeatherReport";
 
 jest.mock("axios");
 const mockedAxios = axios as jest.Mocked<typeof axios>;
