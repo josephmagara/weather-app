@@ -11,24 +11,13 @@ const checkIfFileExists = (fileName: string) => {
   });
 };
 
-describe("All the daytime weather animation files", () => {
-  it("should all be present within the app", () => {
-    const dayAnimations = weatherTypeViewConfigs.map(
-      (viewConfig) => viewConfig.dayFile
-    );
-    dayAnimations.forEach((animationFile) => {
-      expect(animationFile).toMatchObject({})
+describe("The weather animation files", () => {
+  weatherTypeViewConfigs.forEach((viewConfig) => {
+    it("should have it's day animation file present within the app", () => {
+      expect(viewConfig.dayFile).toMatchObject({})
     });
-  });
-});
-
-describe("All the night time weather animation files", () => {
-  it("should all be present within the app", () => {
-    const dayAnimations = weatherTypeViewConfigs.map(
-      (viewConfig) => viewConfig.nightFile
-    );
-    dayAnimations.forEach((animationFile) => {
-      expect(animationFile).toMatchObject({})
+    it("should have it's day animation file present within the app", () => {
+      expect(viewConfig.nightFile).toMatchObject({})
     });
-  });
+  })
 });

@@ -12,6 +12,8 @@ module.exports = {
         +'|react-native-splash-screen'
         +'|react-native-screens'
         +'|react-native-reanimated'
+        +'|react-native-elements'
+        +'|react-native-status-bar-height'
         +'|react-navigation'
         + `)/)`
     ],
