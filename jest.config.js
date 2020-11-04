@@ -3,6 +3,7 @@ module.exports = {
     collectCoverage: true,
     moduleFileExtensions:['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
     moduleDirectories: ['node_modules', 'src'],
+    setupFilesAfterEnv: ['<rootDir>/__tests__/setup-tests.tsx'],
     transform: {
       '^.+\\.js$': '<rootDir>/node_modules/react-native/jest/preprocessor.js',
     },

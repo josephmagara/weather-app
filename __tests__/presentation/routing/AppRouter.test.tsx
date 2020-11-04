@@ -7,14 +7,14 @@ import {
 import { WeatherReport } from "../../../src/domain/weather/WeatherReport";
 import AppRouter from "../../../src/presentation/routing/AppRouter";
 import { NavigationCellId } from "../../../src/presentation/component/navigation/BottomNavigationComponent";
+import { shallow } from "enzyme";
 
 describe("The App Router", () => {
   describe("is loading and has no report", () => {
     const view = renderAppRouter(true, "current_weather");
     test("it should display the loading screen", async () => {
-      expect(
-        view.getByText("Retrieving weather report...")
-      ).toBeInTheDocument();
+      const label = view.find("Text").at(0).dive().text();
+      expect(label).toEqual("Retrieving weather report...");
     });
   });
 });
@@ -32,7 +32,7 @@ function renderAppRouter(
     onNavigationCellSelected: (_cellId: NavigationCellId) => {},
   };
 
-  return render(
+  return shallow(
     <AppContext.Provider value={appContext}>
       <AppRouter />
     </AppContext.Provider>
