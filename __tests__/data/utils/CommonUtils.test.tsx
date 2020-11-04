@@ -12,6 +12,4 @@ describe("Common Utils", () => {
     const stringsAreUnique = firstKey !== second
     expect(stringsAreUnique).toBe(true);
   });
-
-
 });

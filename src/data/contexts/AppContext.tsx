@@ -3,7 +3,7 @@ import { WeatherReport } from "../../domain/weather/WeatherReport";
 import { NavigationCellId } from "../../presentation/component/navigation/BottomNavigationComponent";
 import { getWeatherForCity, weatherResponseToWeatherReport } from "../networking/WeatherGateway";
 
-interface AppContextProtocol {
+export interface AppContextProtocol {
   isLoading: boolean;
   report?: WeatherReport;
   currentSelectedView: NavigationCellId;
