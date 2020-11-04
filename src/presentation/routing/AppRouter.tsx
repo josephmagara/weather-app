@@ -1,5 +1,7 @@
 import * as React from "react";
 import { View } from "react-native";
+import { AppContext } from "../../data/contexts/AppContext";
+import { getItemKey } from "../../data/utils/CommonUtils";
 import { WeatherReport } from "../../domain/weather/WeatherReport";
 import {
   BottomNavigationComponent,
@@ -12,8 +14,6 @@ import { SelectLocationPage } from "../../presentation/pages/SelectLocationPage"
 import WeatherReportPage, {
   WeatherReportPageProps,
 } from "../../presentation/pages/WeatherReportPage";
-import { AppContext } from "../contexts/AppContext";
-import { getItemKey } from "../utils/CommonUtils";
 
 function getMainScreens(
   report: WeatherReport,

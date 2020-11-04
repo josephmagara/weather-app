@@ -1,9 +1,9 @@
 import React from "react";
 import { WeatherReport } from "../../domain/weather/WeatherReport";
 import { NavigationCellId } from "../../presentation/component/navigation/BottomNavigationComponent";
-import { getWeatherForCity } from "../networking/WeatherGateway";
+import { getWeatherForCity, weatherResponseToWeatherReport } from "../networking/WeatherGateway";
 
-interface AppContextProtocol {
+export interface AppContextProtocol {
   isLoading: boolean;
   report?: WeatherReport;
   currentSelectedView: NavigationCellId;
@@ -80,10 +80,10 @@ const AppStateProvider: React.FC<AppProviderProps> = ({
     if (isLoading && cityToQuery !== undefined) {
       getWeatherForCity(cityToQuery)
         .then((response) => {
-
+          const weatherReport = weatherResponseToWeatherReport(response);
           const newAppState: AppState = {
             isLoading: false,
-            report: response,
+            report: weatherReport,
             cityToQuery: cityToQuery,
             currentSelectedView: currentSelectedView,
           };
