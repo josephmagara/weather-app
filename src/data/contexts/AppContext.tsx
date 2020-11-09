@@ -1,7 +1,11 @@
 import React from "react";
 import { WeatherReport } from "../../domain/weather/WeatherReport";
 import { NavigationCellId } from "../../presentation/component/navigation/BottomNavigationComponent";
-import { getWeatherForCity, weatherResponseToWeatherReport } from "../networking/WeatherGateway";
+import {
+  getWeatherForCity,
+  weatherResponseToWeatherReport,
+} from "../networking/WeatherGateway";
+import getCoordinates from "../utils/LocationUtils";
 
 export interface AppContextProtocol {
   isLoading: boolean;
@@ -30,6 +34,7 @@ export interface AppProviderProps {
   loadCurrentWeather: boolean;
   currentSelectedView: NavigationCellId;
   cityToQuery?: string;
+  canAccessUsersCurrentLocation?: boolean;
 }
 
 interface AppState {
@@ -37,6 +42,7 @@ interface AppState {
   report?: WeatherReport;
   currentSelectedView: NavigationCellId;
   cityToQuery?: string;
+  canAccessUsersCurrentLocation?: boolean;
 }
 
 const AppStateProvider: React.FC<AppProviderProps> = ({
@@ -44,11 +50,13 @@ const AppStateProvider: React.FC<AppProviderProps> = ({
   cityToQuery,
   loadCurrentWeather,
   currentSelectedView,
+  canAccessUsersCurrentLocation,
 }) => {
   const initialAppState: AppState = {
     cityToQuery: cityToQuery,
     isLoading: loadCurrentWeather,
     currentSelectedView: currentSelectedView,
+    canAccessUsersCurrentLocation: canAccessUsersCurrentLocation,
   };
 
   const [appState, setAppState] = React.useState<AppState>(initialAppState);
@@ -59,6 +67,7 @@ const AppStateProvider: React.FC<AppProviderProps> = ({
       cityToQuery: city,
       report: appState.report,
       currentSelectedView: "current_weather",
+      canAccessUsersCurrentLocation: appState.canAccessUsersCurrentLocation,
     };
     setAppState(newState);
   };
@@ -69,15 +78,25 @@ const AppStateProvider: React.FC<AppProviderProps> = ({
       cityToQuery: appState.cityToQuery,
       report: appState.report,
       currentSelectedView: appState.currentSelectedView,
-    }
+      canAccessUsersCurrentLocation: appState.canAccessUsersCurrentLocation,
+    };
     newState.currentSelectedView = cellId;
-    newState.isLoading = true
+    newState.isLoading = true;
     setAppState(newState);
   };
 
   React.useEffect(() => {
-    const { isLoading, cityToQuery, currentSelectedView } = appState;
-    if (isLoading && cityToQuery !== undefined) {
+    const {
+      isLoading,
+      cityToQuery,
+      currentSelectedView,
+      canAccessUsersCurrentLocation,
+    } = appState;
+    if (
+      isLoading &&
+      cityToQuery !== undefined &&
+      canAccessUsersCurrentLocation !== undefined
+    ) {
       getWeatherForCity(cityToQuery)
         .then((response) => {
           const weatherReport = weatherResponseToWeatherReport(response);
@@ -86,12 +105,45 @@ const AppStateProvider: React.FC<AppProviderProps> = ({
             report: weatherReport,
             cityToQuery: cityToQuery,
             currentSelectedView: currentSelectedView,
+            canAccessUsersCurrentLocation: canAccessUsersCurrentLocation,
           };
 
           setAppState(newAppState);
         })
         .catch((error) => {
           console.error(error);
+        });
+    }
+  });
+
+  React.useEffect(() => {
+    const { canAccessUsersCurrentLocation } = appState;
+    if (canAccessUsersCurrentLocation === undefined) {
+      getCoordinates()
+        .then((currentLocation) => {
+          let currentCity = cityToQuery;
+          if (currentLocation !== undefined) {
+            currentCity = currentLocation;
+          }
+          const newAppState: AppState = {
+            isLoading: appState.isLoading,
+            report: appState.report,
+            cityToQuery: currentCity,
+            currentSelectedView: appState.currentSelectedView,
+            canAccessUsersCurrentLocation: true,
+          };
+
+          setAppState(newAppState);
+        })
+        .catch((_error) => {
+          const newAppState: AppState = {
+            isLoading: appState.isLoading,
+            report: appState.report,
+            cityToQuery: appState.cityToQuery,
+            currentSelectedView: appState.currentSelectedView,
+            canAccessUsersCurrentLocation: false,
+          };
+          setAppState(newAppState);
         });
     }
   });
